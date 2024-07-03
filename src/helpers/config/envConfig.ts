@@ -4,4 +4,4 @@ export const getBaseUrl = (): string => {
 
 //  https://traverse-backend.vercel.app/api/v1
 
-// http://localhost:3030/api/v1Z
+// http://localhost:3030/api/v1

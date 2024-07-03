@@ -13,6 +13,7 @@ const FeaturedTour = () => {
   const { data: tourData, isLoading } = useGetAvailableTourQuery(undefined);
   const { data: upcomingTours } = useGetUpcomingTourQuery(undefined);
 
+  console.log(tourData);
   console.log(upcomingTours);
   return (
     <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
@@ -57,15 +58,19 @@ const FeaturedTour = () => {
                       </p>
                     </div>
                     <div className="mt-auto flex justify-between">
+                      {/* <Link
+                        href={`/tour/${tour.id}`}
+                        className="btn btn-sm btn-outline hover:bg-CC584A"
+                      >
+                        Details
+                      </Link> */}
+                      <div></div>
                       <Link
                         href={`/tour/${tour.id}`}
                         className="btn btn-sm btn-outline hover:bg-CC584A"
                       >
                         Details
                       </Link>
-                      <button className="btn btn-sm btn-outline hover:bg-CC584A">
-                        Book
-                      </button>
                     </div>
                   </div>
                 </div>

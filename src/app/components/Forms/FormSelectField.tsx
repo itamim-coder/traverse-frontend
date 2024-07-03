@@ -2,7 +2,7 @@
 
 import { useFormContext, Controller } from "react-hook-form";
 
-type SelectOptions = {
+export type SelectOptions = {
   label: string;
   value: string;
 };
@@ -37,9 +37,8 @@ const FormSelectField = ({
         render={({ field: { value, onChange } }) => (
           <select
             onChange={onChange}
-           
             value={value}
-            style={{ width: "100%" }}
+            className="select w-full max-w-xs"
             placeholder={placeholder}
           />
         )}

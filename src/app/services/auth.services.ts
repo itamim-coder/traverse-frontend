@@ -1,6 +1,6 @@
 import { authKey } from "@/constants/storageKey";
 import { setToLocalStorage, getFromLocalStorage } from "../utils/local-storage";
-import { decodedToken } from "../utils/jwt";
+import { decodedToken, isTokenExpired } from "../utils/jwt";
 import { instance as axiosInstance } from "@/helpers/axios/axiosInstance";
 import { getBaseUrl } from "@/helpers/config/envConfig";
 
@@ -11,11 +11,15 @@ export const storeUserInfo = ({ accessToken }: { accessToken: string }) => {
 
 export const getUserInfo = () => {
   const authToken = getFromLocalStorage(authKey);
-  // console.log(authToken);
-  if (authToken) {
+  console.log("auth", authToken);
+  const expired = isTokenExpired(authToken);
+  console.log("valid",expired);
+  if (!expired) {
     const decodedData = decodedToken(authToken);
+    console.log("dec", decodedData);
     return decodedData;
   } else {
+    removeUserInfo(authKey)
     return "";
   }
 };
@@ -29,8 +33,17 @@ export const getNewAccessToken = async () => {
   });
 };
 
+// export const getCookie = (name: string) => {
+//   const value = `; ${document.cookie}`;
+//   const parts = value.split(`; ${name}=`);
+//   console.log("cook",value);
+//   if (parts.length === 2) return parts.pop().split(";").shift();
+// };
+
 export const isLoggedIn = () => {
   const authToken = getFromLocalStorage(authKey);
+  // const refreshToken = getCookie("refreshToken");
+  // console.log("ref", refreshToken);
   return !!authToken;
 };
 export const token = () => {
@@ -39,5 +52,8 @@ export const token = () => {
 };
 
 export const removeUserInfo = (key: string) => {
-  return localStorage.removeItem(key);
+  const data = localStorage.removeItem(key);
+  console.log(data);
+  // window.location.reload();
+  return data;
 };

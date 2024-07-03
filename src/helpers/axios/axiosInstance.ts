@@ -1,4 +1,7 @@
-import { getNewAccessToken } from "@/app/services/auth.services";
+import {
+  getNewAccessToken,
+  removeUserInfo,
+} from "@/app/services/auth.services";
 import {
   getFromLocalStorage,
   setToLocalStorage,
@@ -44,25 +47,42 @@ instance.interceptors.response.use(
   },
   async function (error) {
     const config = error?.config;
-    if (error?.response?.status === 403 && !config?.sent) {
+    console.log(config);
+    console.log(error);
+    if (error?.response?.status === 403 && !config.sent) {
       config.sent = true;
-      const response = await getNewAccessToken();
-      console.log(response);
-      const accessToken = response?.data?.accessToken;
-      config.headers["Authorization"] = accessToken;
-      setToLocalStorage(authKey, accessToken);
-      return instance(config);
-    } else {
-      const responseObject: IGenericErrorResponse = {
-        statusCode: error?.response?.data?.statusCode || 500,
-        message: error?.response?.data?.message || "Something went wrong",
-        errorMessages: error?.response?.data?.message,
-      };
-      console.log(error);
-      return responseObject;
+      try {
+        const response = await getNewAccessToken();
+        if (response?.data?.accessToken) {
+          console.log("generate");
+          const accessToken = response?.data?.accessToken;
+          config.headers["Authorization"] = accessToken;
+          setToLocalStorage(authKey, accessToken);
+          return instance(config);
+        }
+      } catch (tokenRefreshError) {
+        console.error("Token refresh failed", tokenRefreshError);
+        handleLogout();
+      }
     }
-    // return Promise.reject(error);
+
+    if (error.response?.status === 400 || error.response?.status === 500) {
+      handleLogout();
+    }
+
+    const responseObject: IGenericErrorResponse = {
+      statusCode: error?.response?.data?.statusCode || 500,
+      message: error?.response?.data?.message || "Something went wrong",
+      errorMessages: error?.response?.data?.message,
+    };
+    return Promise.reject(responseObject);
   }
 );
+
+// Function to handle logout and redirection
+function handleLogout() {
+  removeUserInfo(authKey);
+  window.location.href = "/login"; // Redirect to login or home page
+}
 
 export { instance };

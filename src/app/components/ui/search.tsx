@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
-import { addHours, format } from "date-fns";
+import { addDays, addHours, format } from "date-fns";
 
 import { useAppDispatch } from "@/redux/hooks";
 
@@ -18,8 +18,9 @@ const Search = () => {
   const [openDate, setOpenDate] = useState(false);
   const [dates, setDates] = useState([
     {
-      startDate: addHours(new Date(), 12),
-      endDate: addHours(new Date(), 13),
+      startDate: new Date(),
+      // endDate: addHours(new Date(), 13),
+      endDate: addDays(new Date(), 1),
       key: "selection",
     },
   ]);
@@ -31,7 +32,8 @@ const Search = () => {
   });
   const { data: locations, isLoading } = useGetLocationQuery(undefined);
   // const { user } = useContext(AuthContext);
-
+  const Locations = locations?.data.result;
+  console.log(Locations)
   const handleOption = (name: any, operation: any) => {
     setOptions((prev) => {
       return {
@@ -44,8 +46,8 @@ const Search = () => {
   // const { dispatch } = useContext(SearchContext);
   const router = useRouter();
   const handleSearch = () => {
-    const selectedLocation = locations.find(
-      (location) => location.name === destination
+    const selectedLocation = Locations?.find(
+      (Locations) => Locations.id === destination
     );
     console.log(dates);
     console.log(selectedLocation);
@@ -56,8 +58,8 @@ const Search = () => {
     }));
     console.log(serializedDates);
     console.log(serializedDates.length);
-    if (!selectedLocation) {
-      alert("error");
+    if (!selectedLocation || !dates) {
+      alert("Select location & Date first");
     } else {
       const serializedOptions = {
         adult: options.adult,
@@ -118,8 +120,8 @@ const Search = () => {
               >
                 <FaLocationDot />
                 <option value="">Select your destination</option>
-                {locations?.map((location) => (
-                  <option key={location.id} value={location.name}>
+                {Locations?.map((location) => (
+                  <option key={location.id} value={location.id}>
                     {location.name}
                   </option>
                 ))}

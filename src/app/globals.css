@@ -15,4 +15,12 @@
 .animate-spin-slow {
   animation: spin-slow 20s linear infinite; /* Adjust the duration (3s) as needed */
 }
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
 
+.submenu.active {
+  max-height: 500px; /* Change this value as per your need */
+}

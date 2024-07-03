@@ -9,6 +9,7 @@ import { useUserLoginMutation } from "@/redux/api/authApi";
 import { storeUserInfo } from "@/app/services/auth.services";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
+import Alert from "../ui/Alert/alert";
 
 type FormValues = {
   email: string;
@@ -28,14 +29,17 @@ const LoginPage = () => {
         storeUserInfo({ accessToken: res?.accessToken });
         router.push("/");
       }
-    } catch (err) {}
+    } catch (err) {
+      console.log(err)
+      toast.error("Error!!");
+    }
   };
   return (
     <>
       <div className="flex justify-center items-center min-h-screen bg-gray-100">
         <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-white text-black">
           <h1 className="text-2xl font-bold text-center">Login</h1>
-        
+
           <Form submitHandler={onSubmit}>
             <div>
               <FormInput
@@ -111,26 +115,7 @@ const LoginPage = () => {
           </p>
         </div>
       </div>
-      <Toaster
-        toastOptions={{
-          // Define default options
-          className: "",
-          duration: 3000,
-          style: {
-            background: "#363636",
-            color: "#fff",
-          },
-
-          // Default options for specific types
-          success: {
-            duration: 3000,
-            theme: {
-              primary: "green",
-              secondary: "black",
-            },
-          },
-        }}
-      />
+      <Alert />
     </>
   );
 };

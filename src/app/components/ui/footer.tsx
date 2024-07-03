@@ -1,18 +1,21 @@
 import React from "react";
+import { FaPhoneAlt } from "react-icons/fa";
+import { SiMinutemailer } from "react-icons/si";
+import { FaLocationPin } from "react-icons/fa6";
 
 const Footer = () => {
   return (
     <div>
-      <footer className="py-6 dark:bg-gray-800 dark:text-gray-50">
+      <footer className="py-6 bg-[#1a1a1a] text-white">
         <div className="container px-6 mx-auto space-y-6 divide-y dark:divide-gray-400 md:space-y-12 divide-opacity-50">
           <div className="grid grid-cols-12">
-            <div className="pb-6 col-span-full md:pb-0 md:col-span-6">
+            <div className="pb-6 col-span-3 md:pb-0 ">
               <a
                 rel="noopener noreferrer"
                 href="#"
                 className="flex justify-center space-x-3 md:justify-start"
               >
-                <div className="flex items-center justify-center w-12 h-12 rounded-full dark:bg-violet-400">
+                <div className="flex items-center justify-center w-12 h-12 rounded-full dark:bg-orange-400">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 32 32"
@@ -27,105 +30,126 @@ const Footer = () => {
                 </span>
               </a>
             </div>
-            <div className="col-span-6 text-center md:text-left md:col-span-3">
-              <p className="pb-1 text-lg font-medium">Category</p>
-              <ul>
+            <div className="col-span-3 text-center md:text-left ">
+              <p className="pb-1 text-xl font-bold text-orange-400">Quick Link</p>
+              <ul className="my-3 grid gap-y-3">
                 <li>
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="hover:dark:text-violet-400"
+                    className="hover:dark:text-orange-400 font-semibold"
                   >
-                    Link
+                    About Us
                   </a>
                 </li>
                 <li>
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="hover:dark:text-violet-400"
+                    className="hover:dark:text-orange-400 font-semibold"
                   >
-                    Link
+                    Destination
                   </a>
                 </li>
                 <li>
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="hover:dark:text-violet-400"
+                    className="hover:dark:text-orange-400 font-semibold"
                   >
-                    Link
+                    Tour Package
                   </a>
                 </li>
                 <li>
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="hover:dark:text-violet-400"
+                    className="hover:dark:text-orange-400 font-semibold"
                   >
-                    Link
+                    Tour Guide
                   </a>
                 </li>
                 <li>
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="hover:dark:text-violet-400"
+                    className="hover:dark:text-orange-400 font-semibold"
                   >
-                    Link
+                    Article
                   </a>
                 </li>
               </ul>
             </div>
-            <div className="col-span-6 text-center md:text-left md:col-span-3">
-              <p className="pb-1 text-lg font-medium">Category</p>
-              <ul>
-                <li>
-                  <a
-                    rel="noopener noreferrer"
-                    href="#"
-                    className="hover:dark:text-violet-400"
-                  >
-                    Link
-                  </a>
-                </li>
-                <li>
-                  <a
-                    rel="noopener noreferrer"
-                    href="#"
-                    className="hover:dark:text-violet-400"
-                  >
-                    Link
-                  </a>
-                </li>
-                <li>
-                  <a
-                    rel="noopener noreferrer"
-                    href="#"
-                    className="hover:dark:text-violet-400"
-                  >
-                    Link
-                  </a>
-                </li>
-                <li>
-                  <a
-                    rel="noopener noreferrer"
-                    href="#"
-                    className="hover:dark:text-violet-400"
-                  >
-                    Link
-                  </a>
-                </li>
-                <li>
-                  <a
-                    rel="noopener noreferrer"
-                    href="#"
-                    className="hover:dark:text-violet-400"
-                  >
-                    Link
-                  </a>
-                </li>
-              </ul>
+            <div className="col-span-3 grid gap-y-3 text-center md:text-left ">
+              <div>
+                <p className="pb-1 text-xl font-medium flex text-orange-400 items-center gap-3">
+                  <FaPhoneAlt className="text-orange-400" /> More inquiry
+                </p>
+                <ul>
+                  <li>
+                    <a
+                      rel="noopener noreferrer"
+                      href="#"
+                      className="hover:dark:text-orange-400"
+                    >
+                      +999-858 624 984
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <p className="pb-1 text-xl font-medium text-orange-400 flex items-center gap-3">
+                  <SiMinutemailer className="text-orange-400" />
+                  Send Mail
+                </p>
+                <ul>
+                  <li>
+                    <a
+                      rel="noopener noreferrer"
+                      href="#"
+                      className="hover:dark:text-orange-400"
+                    >
+                      info@example.com
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <p className="pb-1 text-xl font-medium flex text-orange-400 items-center gap-3">
+                  <FaLocationPin className="text-orange-400" />
+                  Address
+                </p>
+                <ul>
+                  <li>
+                    <a
+                      rel="noopener noreferrer"
+                      href="#"
+                      className="hover:dark:text-orange-400"
+                    >
+                      House 168/170, Avenue 01, Mirpur DOHS,
+                      <br />
+                      Dhaka, Bangladesh
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="col-span-3 text-center md:text-left ">
+              <p className="pb-1 text-lg font-medium text-orange-400">We Accept</p>
+              <div className="flex space-x-4 my-3">
+                <img
+                  src="https://cdn.sharetrip.net/sharetrip_net/production/public/images/sample-images/we-accept/stPay.svg"
+                  alt=""
+                />
+                <img
+                  src="https://cdn.sharetrip.net/sharetrip_net/production/public/images/sample-images/we-accept/visaCard.svg"
+                  alt=""
+                />
+                <img
+                  src="https://demo-egenslab.b-cdn.net/html/triprex/preview/assets/img/home1/icon/stripe-logo.svg"
+                  alt=""
+                />
+              </div>
             </div>
           </div>
           <div className="grid justify-center pt-6 lg:justify-between">
@@ -143,7 +167,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 href="#"
                 title="Email"
-                className="flex items-center justify-center w-10 h-10 rounded-full dark:bg-violet-400 dark:text-gray-900"
+                className="flex items-center justify-center w-10 h-10 rounded-full dark:bg-orange-400 dark:text-gray-900"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -159,7 +183,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 href="#"
                 title="Twitter"
-                className="flex items-center justify-center w-10 h-10 rounded-full dark:bg-violet-400 dark:text-gray-900"
+                className="flex items-center justify-center w-10 h-10 rounded-full dark:bg-orange-400 dark:text-gray-900"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -174,7 +198,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 href="#"
                 title="GitHub"
-                className="flex items-center justify-center w-10 h-10 rounded-full dark:bg-violet-400 dark:text-gray-900"
+                className="flex items-center justify-center w-10 h-10 rounded-full dark:bg-orange-400 dark:text-gray-900"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

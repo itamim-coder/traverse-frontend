@@ -10,6 +10,7 @@ import FeaturedTour from "./components/FeaturedTour/featuredTour";
 import Footer from "./components/ui/footer";
 import { Toaster } from "react-hot-toast";
 import WhyUs from "./components/WhyUs/whyus";
+import Review from "./components/Review/Review";
 
 function Home() {
   return (
@@ -22,6 +23,7 @@ function Home() {
         <IntroTwo />
         <FeaturedTour />
         <WhyUs />
+        <Review />
       </div>
       <Footer />
       <Toaster />

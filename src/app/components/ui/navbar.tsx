@@ -9,6 +9,16 @@ import { CgProfile } from "react-icons/cg";
 
 const NavBar = () => {
   const { email } = getUserInfo();
+  // useEffect(() => {
+  //   const authToken = getUserInfo().accessToken;
+  //   if (authToken) {
+  //     if (isTokenExpired(authToken)) {
+  //       handleLogout();
+  //     } else {
+  //       setEmail(getUserInfo().email);
+  //     }
+  //   }
+  // }, []);
   console.log("navbar", email);
   const router = useRouter();
   const logOut = () => {
@@ -35,7 +45,7 @@ const NavBar = () => {
               />
             </svg>
           </label>
-          <ul
+          {/* <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
@@ -56,14 +66,14 @@ const NavBar = () => {
             <li>
               <a>Item 3</a>
             </li>
-          </ul>
+          </ul> */}
         </div>
         <Link href="/" className="btn btn-ghost normal-case text-xl">
           TraVerse.
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        {/* <ul className="menu menu-horizontal px-1">
           <li>
             <a>Item 1</a>
           </li>
@@ -83,7 +93,7 @@ const NavBar = () => {
           <li>
             <a>Item 3</a>
           </li>
-        </ul>
+        </ul> */}
       </div>
       <div className="navbar-end">
         {email ? (

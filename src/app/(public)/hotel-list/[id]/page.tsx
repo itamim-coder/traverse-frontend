@@ -7,8 +7,9 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setSearchQuery } from "@/redux/Features/hotelSlice";
 import { BsArrowUpRight } from "react-icons/bs";
+import { FaLocationDot } from "react-icons/fa6";
 const HotelList = ({ params }) => {
-  const [priceRange, setPriceRange] = useState(10000);
+  const [priceRange, setPriceRange] = useState(100000);
 
   const { searchQuery } = useAppSelector((state) => state.hotel);
 
@@ -33,38 +34,44 @@ const HotelList = ({ params }) => {
   });
 
   return (
-    <div className="min-h-screen mx-25">
-      <div className="flex space-x-4">
-        <div className="w-1/4 min-h-screen">
-          <h1 className=" text-center my-5">
-            Daily<span className="text-primary"> Price</span>
-          </h1>
+    <div className="min-h-screen mx-25 bg-background">
+      <div className="flex  ">
+        <div className="w-1/4 min-h-screen bg-white my-8 mx-4 p-4">
+          <p className="my-3 font-semibold">Search Hotels</p>
+          <div className="form-control">
+            <p className="my-3">Hotel Name</p>
+            <div className="relative">
+              <FaLocationDot className="absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-400" />
+              <input
+                type="text"
+                placeholder="   Search hotel name..."
+                value={searchQuery}
+                onChange={(e) => handleSearch(e.target.value)}
+                className="input w-full input-bordered input-sm lg:input-md rounded pl-10"
+              />
+            </div>
+          </div>
+          <p className="mt-5 mb-3 font-semibold">Filter By Price</p>
+
           <input
             type="range"
             min="1000"
-            max="10000"
-            step="500"
+            max="100000"
+            step="1000"
             value={priceRange}
             onChange={handlePriceChange}
-            className="range range-primary"
+            className="range range-xs range-primary"
           />
-          <span className="ml-2 font-semibold text-primary text-base">
-            ${priceRange.toFixed(2)}
-          </span>
-          <div className="form-control">
-            <p className="text-center my-5">Search By Name</p>
-            <input
-              type="text"
-              placeholder="Search"
-              value={searchQuery}
-              onChange={(e) => handleSearch(e.target.value)}
-              className="input input-bordered input-sm lg:input-md rounded-full "
-            />
+          <div className="my-3 font-semibold  text-base">
+            Price :{" "}
+            <span className="py-1 px-3 rounded bg-blue-100 text-blue-800">
+              ${priceRange.toFixed(2)}
+            </span>
           </div>
         </div>
-        <div className="w-3/4 min-h-screen px-25">
+        <div className="w-3/4 min-h-screen my-8 mx-4">
           <section className="text-gray-600 body-font overflow-hidden">
-            <div className="container px-5  mx-auto">
+            <div className="container min-h-screen px-5 mx-auto bg-white p-4">
               <p className="my-5">Available Hotels : 100</p>
               <div className="mb-4 divide-y-2 divide-gray-100">
                 {filteredItems?.map((dt) => (

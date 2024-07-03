@@ -5,11 +5,9 @@ export const WhyUsSlider = () => {
   const [currentSlider, setCurrentSlider] = useState(0);
   // The slider images array
   const sliderImages = [
-    "https://source.unsplash.com/500x500/?nature/?1",
-    "https://source.unsplash.com/500x500/?nature/?3",
-    "https://source.unsplash.com/500x500/?nature/?5",
-    "https://source.unsplash.com/500x500/?nature/?2",
-    "https://source.unsplash.com/500x500/?nature/?4",
+    "https://travosy.vercel.app/static/media/1.f66fa632eaccba2c9d8f.jpg",
+    "https://travosy.vercel.app/static/media/3.86227d75d7bec8381222.jpg",
+    "https://envato.bdevs.net/tourigo/wp-content/uploads/2024/04/blog-image-2.png",
   ];
   const prevSlider = () => {
     setCurrentSlider((currentSlider) =>
@@ -36,7 +34,7 @@ export const WhyUsSlider = () => {
       <button onClick={prevSlider} className="h-6 w-6">
         <svg
           viewBox="0 0 1024 1024"
-        //   className="icon h-4 w-4 md:h-6 md:w-6"
+          //   className="icon h-4 w-4 md:h-6 md:w-6"
           xmlns="http://www.w3.org/2000/svg"
           fill="#000000"
         >
@@ -48,7 +46,7 @@ export const WhyUsSlider = () => {
           ></g>
           <g id="SVGRepo_iconCarrier">
             <path
-              fill="#0095FF"
+              fill="rgb(220, 128, 82)"
               d="M685.248 104.704a64 64 0 010 90.496L368.448 512l316.8 316.8a64 64 0 01-90.496 90.496L232.704 557.248a64 64 0 010-90.496l362.048-362.048a64 64 0 0190.496 0z"
             ></path>
           </g>
@@ -64,11 +62,11 @@ export const WhyUsSlider = () => {
           {/* sliders */}
           {sliderImages.map((slide, inx) => (
             <img
-              width={500}
-              height={500}
+              // width={500}
+              // height={500}
               key={inx}
               src={slide}
-              className="mx-[2.5%] h-full min-w-[95%] rounded-2xl border-8 border-transparent object-cover"
+              className="mx-[2.5%] min-w-[95%] rounded-2xl border-8 border-transparent object-cover"
               alt={`Slider - ${inx + 1}`}
             />
           ))}
@@ -98,7 +96,7 @@ export const WhyUsSlider = () => {
           ></g>
           <g id="SVGRepo_iconCarrier">
             <path
-              fill="#0095FF"
+              fill="rgb(220, 128, 82)"
               d="M685.248 104.704a64 64 0 010 90.496L368.448 512l316.8 316.8a64 64 0 01-90.496 90.496L232.704 557.248a64 64 0 010-90.496l362.048-362.048a64 64 0 0190.496 0z"
             ></path>
           </g>
